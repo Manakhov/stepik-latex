@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.50cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+
+\title{Лабораторная работа $\textnumero 2$\\
+	по теме: Набор простых математических и физических формул в \LaTeX.}
+\author{Студент Иванов А. А., гр. ИСФ(аб)-81}
+\date{\today}
+
+\begin{document}
+	
+\selectlanguage{russian}
+
+\maketitle
+
+\section*{Кулоновская волновая функция}
+
+Радиальное уравнение Шредингера для задачи рассеяния электрона с импульсом $p$ на положительном ядре с зарядом $Z$ в атомных единицах имеет следующий вид:
+\begin{equation}\label{eq_1}
+\left(-\frac{1}{2}\frac{d^2}{dr^2}+
+\frac{l(l+1)}{2r^2}-
+\frac{Z}{r}-\frac{p^2}{2}\right)\psi=0
+\end{equation}
+Выпишем регулярное решение уравнения \eqref{eq_1}, приведенное в \cite{knut}:
+\begin{equation}\label{eq_2}
+\varphi_l^c(p,r)=r^{l+1}{e^{ipr}}_1F_1(l+1+it,2l+2,-2ipr),
+\end{equation}
+где $t=-\frac{Z}{p}$ -- параметр Зоммерфельда для случая взаимного притяжения электронов и ядра. Асимптотическое поведение функции \eqref{eq_2} при $r\to\infty$
+\begin{equation}\label{eq_3}
+\varphi_l^c(p,r)\xrightarrow[r\to\infty]{}2(2p)^{-l-1}e^{\frac{1}{2}\pi t}
+\frac{\Gamma(2l+2)}{\left|\Gamma(l+1+it)\right|}
+\sin(pr-t\ln{2pr}-\frac{1}{2}\pi l+\sigma_l)
+\end{equation}
+где $\sigma_l=\arg\Gamma(l+1+it)$ -- кулоновская фаза.
+
+Радиальная волновая функция, соответствующая асимптотике расходящейся сферической волны, $\psi_l^{c+}(p,r)$
+\begin{multline}\label{eq_4}
+\psi_l^{c+}(p,r)=\frac{1}{2}(2p)^{l+1}e^{-\frac{1}{2}\pi t}
+\frac{\Gamma(l+1+it)}{\Gamma(2l+2)}\varphi_l^c(p,r)=\\=
+\frac{1}{2}(2pr)^{l+1}e^{-\frac{1}{2}\pi t}e^{ipr}
+{\frac{\Gamma(l+1+it)}{\Gamma(2l+2)}}_1F_1(l+1+it,2l+2,-2ipr)
+\end{multline}
+связана с трехмерной волной функцией $\psi^{c+}(\vec{p},\vec{r})$ соотношением
+\begin{equation}\label{eq_5}
+\psi^{c+}(\vec{p},\vec{r})=\sqrt{\frac{2}{\pi p}\frac{1}{r}}
+\sum_{lm}^{}i^l\psi_l^{c+}(p,r)Y_lm(\hat{r})Y_lm^*(\hat{p})
+\end{equation}
+Так как волновая функция \eqref{eq_5} описывает состояния из непрерывного спектра, то состояния с различными значениями импульса $\vec{p}$ ортогональны в том смысле, что выполняется условие нормировки:
+\begin{equation}\label{eq_6}
+(\psi^{c+}(\vec{p'})|\psi^{c+}(\vec{p}))=\delta(\varepsilon-\varepsilon')
+\delta(\hat{\vec{p}}-\hat{\vec{p'}})=p\delta(\vec{p}-\vec{p'}),
+\end{equation}
+где $\varepsilon=\frac{p^2}{2},\varepsilon'=\frac{p'^2}{2}$ -- энергия электрона.
+
+\begin{thebibliography}{99}
+	\bibitem{knut}
+	Кнут Д. Е.
+	Всё про \TeX.
+	\newblock --- Протвино\ : RDTeX, 1993. --- 592~с.
+	\bibitem{Stolyarov}
+	Столяров А. В.
+	Сверстай диплом красиво: \LaTeX\ за 3 дня.
+	\newblock --- М.\ : МАКС пресс, 2010. --- 512~с.
+\end{thebibliography}
+
+\end{document}
